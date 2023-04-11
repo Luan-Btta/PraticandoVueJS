@@ -15,6 +15,7 @@
         {{subtrair()}}<br>
         {{multiplicar()}}<br>
         {{dividir()}}<br>
+        {{numeroAleatório()}}<br>
     </div>
 
 
@@ -22,23 +23,23 @@
 
         const vm = new Vue({
             el: '#app',
-            data: {
-                n1: 10,
-                n2: 5,
-            },
+            data: {},
             methods:{
                 somar: function somar(){
-                    return this.n1 + this.n2;
+                    return 4 + 2;
                 },
                 subtrair: function(){
-                    return this.n1 - this.n2;
+                    return 4 - 2;
                 },
                 multiplicar: ()=>{
-                    return this.n1 * this.n2; //contexto léxico
+                    return 4 * 2;
                 },
                 dividir(){
-                    return this.n1 / this.n2;
+                    return 4 / 2;
                 },
+                numeroAleatório: function numeroAleatório(){
+                    return Math.random();
+                }
             }
         }); //vm = ViewModel
 
