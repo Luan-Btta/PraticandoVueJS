@@ -28,10 +28,22 @@
 
 <body>
     <div id="app">
-        <input type="text" @keyup="imprimirTexto('Teste parametro')">
-        <button v-on:click="mensagemAlerta()">Botão</button>
-        <input type="text" @keyup="imprimirTexto2('Teste parametro', 5, xyz)">
+        {{ mensagem }}
         <br>
+        <input type="text" name="" id="" :value="mensagem">
+        <br>
+        {{ mensagem.length }}
+        <br>
+        {{ mensagem.substr(0,3) }}
+        <br>
+        {{ (2 + 2) / 4 }}
+        <br>
+        <input type="text" name="" id="" :value="2 + 2" :class="estilo">
+        <br>
+        <input type="text" name="" id="" :value="2 + 2" :class="1 == 1 ? 'verde' : estilo">
+        <br>
+        <input type="text" name="" id="" :value="2 + 2" :class="teste ? 'verde' : estilo">
+
     </div>
 
 
@@ -40,20 +52,12 @@
         const vm = new Vue({
             el: '#app',
             data: {
-               xyz: true
+                mensagem: 'Expressão',
+                estilo: 'azul',
+                teste: false
             },
             methods: {
-                imprimirTexto(texto){
-                    console.log(texto);
-                },
-                imprimirTexto2(texto, numero, x){
-                    console.log(texto);
-                    console.log(numero);
-                    console.log(x);
-                },
-                mensagemAlerta(){
-                   alert('Mensagem de alerta');
-                }
+
             }
         }); //vm = ViewModel
 

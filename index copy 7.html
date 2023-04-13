@@ -28,10 +28,12 @@
 
 <body>
     <div id="app">
-        <input type="text" @keyup="imprimirTexto('Teste parametro')">
+        <input type="text" v-on:keyup="imprimirTexto()">
         <button v-on:click="mensagemAlerta()">Botão</button>
-        <input type="text" @keyup="imprimirTexto2('Teste parametro', 5, xyz)">
         <br>
+        <br>
+        <input type="text" @keyup="imprimirTexto()">
+        <button @click="mensagemAlerta()">Botão</button>
     </div>
 
 
@@ -40,16 +42,11 @@
         const vm = new Vue({
             el: '#app',
             data: {
-               xyz: true
+               
             },
             methods: {
-                imprimirTexto(texto){
-                    console.log(texto);
-                },
-                imprimirTexto2(texto, numero, x){
-                    console.log(texto);
-                    console.log(numero);
-                    console.log(x);
+                imprimirTexto(){
+                    console.log('Teste');
                 },
                 mensagemAlerta(){
                    alert('Mensagem de alerta');
