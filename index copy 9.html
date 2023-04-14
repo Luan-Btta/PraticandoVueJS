@@ -48,23 +48,17 @@
 
 <body>
     <div id="app">
-        <a href="https://google.com.br" target="_blank" @click.prevent="prevenirComportamentoPadrao($event)">
-            Link
-        </a>
-        <br>
-        Mensagem: {{msg}}
+        <div class="borda div-principal"  :class="cor">
+            Cor: {{cor}}
+            <br>
+            Posição X mouse: {{posicaoX}}
+            <br>
+            Posição Y mouse: {{posicaoY}}
+        </div>
         <hr>
-        <button @click.once="executarUmaVez()">Botão</button>
-        <br>
-        <p>Cliques= {{cliques}}</p>
-        <hr>
-        <form @submit.prevent.once="prevenirUmaVez()">
-            <button type="submit">Enviar</button>
-        </form>
-        <p>Formulario: {{formulario}}</p>
-        <hr>
-        <input type="text" @keyup.Shift.Enter="capturandoTeclas($event)">
-        <p>Teclas: {{teclas}}</p>
+        <div @click="mudarCor('verde')" class="borda div-comum verde"></div>
+        <div @mouseover="mudarCor('vermelho')" @mouseout="mudarCor('azul')" class="borda div-comum vermelho"></div>
+        <div @mousemove="coordenadas($event)" class="borda div-comum azul"></div>
     </div>
 
 
@@ -73,24 +67,19 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                msg: '',
-                cliques: 0,
-                formulario: '',
-                teclas: '',
+                cor: '',
+                posicaoX: 0,
+                posicaoY: 0,
             },
             methods: {
-                prevenirComportamentoPadrao(){
-                    this.msg = 'Comportamento padrão ativado';
+                mudarCor(c) {
+                    console.log(c);
+                    this.cor = c;
                 },
-                executarUmaVez(){
-                    this.cliques++;
-                },
-                prevenirUmaVez(){
-                    this.formulario = 'Prevenindo o comportamento padrão';
-                },
-                capturandoTeclas(event){
-                    this.teclas += event.key
-                },
+                coordenadas(e){
+                    this.posicaoX=e.clientX;
+                    this.posicaoY=e.clientY;
+                }
             }
         }); //vm = ViewModel
 

@@ -53,18 +53,6 @@
         </a>
         <br>
         Mensagem: {{msg}}
-        <hr>
-        <button @click.once="executarUmaVez()">Botão</button>
-        <br>
-        <p>Cliques= {{cliques}}</p>
-        <hr>
-        <form @submit.prevent.once="prevenirUmaVez()">
-            <button type="submit">Enviar</button>
-        </form>
-        <p>Formulario: {{formulario}}</p>
-        <hr>
-        <input type="text" @keyup.Shift.Enter="capturandoTeclas($event)">
-        <p>Teclas: {{teclas}}</p>
     </div>
 
 
@@ -74,22 +62,10 @@
             el: '#app',
             data: {
                 msg: '',
-                cliques: 0,
-                formulario: '',
-                teclas: '',
             },
             methods: {
                 prevenirComportamentoPadrao(){
                     this.msg = 'Comportamento padrão ativado';
-                },
-                executarUmaVez(){
-                    this.cliques++;
-                },
-                prevenirUmaVez(){
-                    this.formulario = 'Prevenindo o comportamento padrão';
-                },
-                capturandoTeclas(event){
-                    this.teclas += event.key
                 },
             }
         }); //vm = ViewModel

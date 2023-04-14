@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="/JS/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <script src="/JS/vue.js"></script>
+    <title>Document</title>
+
+    <style>
+        .verde {
+            background-color: green;
+        }
+
+        .negrito {
+            font-weight: bold;
+        }
+
+        .azul {
+
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" @keyup="imprimirTexto('Teste parametro')">
+        <button v-on:click="mensagemAlerta()">Botão</button>
+        <input type="text" @keyup="imprimirTexto2('Teste parametro', 5, xyz)">
+        <br>
+    </div>
+
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+               xyz: true
+            },
+            methods: {
+                imprimirTexto(texto){
+                    console.log(texto);
+                },
+                imprimirTexto2(texto, numero, x){
+                    console.log(texto);
+                    console.log(numero);
+                    console.log(x);
+                },
+                mensagemAlerta(){
+                   alert('Mensagem de alerta');
+                }
+            }
+        }); //vm = ViewModel
+
+    </script>
+
+</body>
+
+</html>
