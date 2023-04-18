@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="/JS/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <script src="/JS/vue.js"></script>
+    <title>Document</title>
+
+    <style>
+        .verde {
+            background-color: green;
+        }
+
+        .azul {
+            background-color: blue;
+        }
+
+        .vermelho {
+            background-color: red;
+        }
+
+        .negrito {
+            font-weight: bold;
+        }
+
+        .borda {
+
+            border: 1px solid;
+        }
+
+        .div-principal {
+            width: 300px;
+            height: 300px;
+        }
+
+        .div-comum {
+            width: 80px;
+            height: 80px;
+            float: left;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <a href="https://google.com.br" target="_blank" @click.prevent="prevenirComportamentoPadrao($event)">
+            Link
+        </a>
+        <br>
+        Mensagem: {{msg}}
+        <hr>
+        <button @click.once="executarUmaVez()">Botão</button>
+        <br>
+        <p>Cliques= {{cliques}}</p>
+        <hr>
+        <form @submit.prevent.once="prevenirUmaVez()">
+            <button type="submit">Enviar</button>
+        </form>
+        <p>Formulario: {{formulario}}</p>
+        <hr>
+        <input type="text" @keyup.Shift.Enter="capturandoTeclas($event)">
+        <p>Teclas: {{teclas}}</p>
+    </div>
+
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '',
+                cliques: 0,
+                formulario: '',
+                teclas: '',
+            },
+            methods: {
+                prevenirComportamentoPadrao(){
+                    this.msg = 'Comportamento padrão ativado';
+                },
+                executarUmaVez(){
+                    this.cliques++;
+                },
+                prevenirUmaVez(){
+                    this.formulario = 'Prevenindo o comportamento padrão';
+                },
+                capturandoTeclas(event){
+                    this.teclas += event.key
+                },
+            }
+        }); //vm = ViewModel
+
+    </script>
+
+</body>
+
+</html>
