@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="/JS/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <script src="./JS/vue.js"></script>
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="curso in cursos">{{ curso }}</li>
+        </ul>
+        <hr>
+        <table style="padding: 15px; border: 4px solid;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(curso,key) in cursos2">
+                    <td>{{key}}</td>
+                    <td>{{ curso.titulo }}</td>
+                    <td>{{ curso.descricao }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table style="padding: 15px; border: 4px solid;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="({titulo, descricao},key) in cursos2">
+                    <td>{{key}}</td>
+                    <td>{{ titulo }}</td>
+                    <td>{{ descricao }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ul>
+            <li v-for="(p, key) in publicacoes" style="border: solid 1px; margin-bottom: 10px; padding: 10px; max-width: 70%;" :key="p.id">                
+                {{ p.publicacao }}
+                <hr>
+                <input type="text" name="" id="">
+            </li>
+        </ul>
+        <button @click="misturarArray()">Misturar Publicacões</button>
+    </div>
+
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                cursos: ['Laravel', 'Web Completo', 'Banco de Dados', 'Solid', 'Angular'],
+                cursos2: {
+                    1000: { titulo: 'Laravel', descricao: 'Domine o framework PHP' },
+                    1001: { titulo: 'Banco de Dados', descricao: 'Aprenda os principais BDs relacionar' },
+                },
+                publicacoes: [
+                    { id: 1, publicacao: 'Publicacão 001' },
+                    { id: 2, publicacao: 'Publicacão 002' },
+                    { id: 3, publicacao: 'Publicacão 003' },
+                    { id: 4, publicacao: 'Publicacão 004' },
+                ],
+            },
+            methods: {
+                misturarArray(){
+                    let misturado = []
+
+                    misturado[0] = this.publicacoes[2];
+                    misturado[1] = this.publicacoes[0];
+                    misturado[2] = this.publicacoes[3];
+                    misturado[3] = this.publicacoes[1];
+
+                    this.publicacoes = misturado;
+                }
+            }
+        }); //vm = ViewModel
+
+    </script>
+
+</body>
+
+</html>

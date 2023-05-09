@@ -26,14 +26,16 @@
         <hr>
         <h4>Último paciente cadastrado</h4>
             <p v-if="pacientes.length>0">
-                {{ ultimoPacinete }}
+                {{ pacientes[pacientes.length-1].nome }}, 
+                {{ pacientes[pacientes.length-1].idade }}, 
+                {{ pacientes[pacientes.length-1].plano }}
             </p>
         <hr>
 
         <hr>
         <h4>Pacientes do plano Ouro</h4>
-            <p v-for="p in pacientesOuro">
-                {{ p.nome }}    
+            <p v-for="p in pacientes">
+                {{ p.plano == 'Ouro' ? p.nome : '' }}    
             </p>
         <hr>
 
@@ -48,20 +50,6 @@
             el: '#app',
             data: {
                pacientes:[]
-            },
-            computed: {
-                ultimoPacinete(){
-                    let key = this.pacientes.length - 1;
-                    let txt = '';
-                    txt += 'Paciente: ' + this.pacientes[key].nome,
-                    txt += ', Idade: ' + this.pacientes[key].idade,
-                    txt += ', Plano: ' + this.pacientes[key].plano
-
-                    return txt.toUpperCase();
-                },
-                pacientesOuro(){
-                    return this.pacientes.filter(paciente => paciente.plano == 'Ouro')
-                }
             },
             methods: {
                 adicionarPaciente(){
