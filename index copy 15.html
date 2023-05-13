@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="/JS/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <script src="./JS/vue.js"></script>
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <div id="app">
+        <!-- V-IF SIMPLES -->
+        <button @click="exibirSaldo = !exibirSaldo">
+            <span v-if="!exibirSaldo">Exibir Saldo</span>
+            <span v-if="exibirSaldo">Ocultar Saldo</span>
+
+        </button> <!--  toggle -->
+        <p>Saldo: <span v-if="exibirSaldo">R$ {{ saldo }}</span></p>
+
+        <hr>
+        <!-- V-IF E V-ELSE -->
+        Idade: <input type="text" id="inputIdade" @blur="setIdade()">
+        <p v-if="idade <18">Menor de idade</p>
+        <p v-else>Maior de idade</p>
+
+        <!-- V-IF, V-ELSE-IF E V-ELSE -->
+        Nota: <input type="text" id="inputNota" @blur="setNota()">
+        <p v-if="nota>=9">Aprovado com Louvor</p>
+        <p v-else-if="nota>6">Aprovado</p>
+        <p v-else>Reprovado</p>
+    </div>
+
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                saldo: 470.15,
+                exibirSaldo: true,
+                idade: 0,
+                nota: 0,
+            },
+            methods: {
+                setIdade() {
+                    this.idade = inputIdade.value;
+                },
+                setNota() {
+                    this.nota = inputNota.value;
+                }
+            }
+        }); //vm = ViewModel
+
+    </script>
+
+</body>
+
+</html>

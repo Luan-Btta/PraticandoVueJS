@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="/JS/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <script src="./JS/vue.js"></script>
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <div id="app">
+        <span>Paciente: </span><input type="text" v-model="paciente">
+        <br>
+        <hr>
+        <ul>
+            <li v-for="b in busca">{{ b.nome }}, {{ b.idade }}</li>
+        </ul>
+    </div>
+
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                paciente: '',
+                pacientes: [
+                    {nome: 'Luan Batista', idade: '26'},
+                    {nome: 'Lyandra', idade: '25'},
+                    {nome: 'Maria', idade: '50'},
+                    {nome: 'José M', idade: '35'},
+                    {nome: 'Lucas', idade: '6'},
+                    {nome: 'Luciano', idade: '19'},
+                ],
+                busca: [],
+            },
+            methods: {
+                
+            },
+            watch: {
+                paciente(v){
+                    this.busca = this.pacientes.filter(p => p.nome.match(v))
+                }
+            }
+        }); //vm = ViewModel
+
+    </script>
+
+</body>
+
+</html>

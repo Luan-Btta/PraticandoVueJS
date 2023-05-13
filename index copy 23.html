@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="/JS/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+    <script src="./JS/vue.js"></script>
+    <title>Document</title>
+
+
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="n in numero">{{ n }}</li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="c in comentarios">{{ c.id }} - {{ c.comentario }}</li>
+        </ul>
+        <button @click="adicionarElemento()" id="comentario">Adicionar</button>
+        <button @click="removerElemento()" id="comentario">Remover</button>
+        <button @click="modificarElemento()" id="comentario">Atualizar</button>
+        <hr>
+        <button @click="adicionarNumero()" id="comentario">Adicionar Número</button>
+        <hr>
+    </div>
+
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                numero: 15,
+                comentarios: [
+                    {id: 1, comentario: 'Comentário 1'},
+                    {id: 2, comentario: 'Comentário 2'},
+                    {id: 3, comentario: 'Comentário 3'},
+                    {id: 4, comentario: 'Comentário 4'},
+                ],
+                cursos: ['Laravel', 'Web Completo', 'Banco de Dados', 'Solid', 'Angular'],
+                cursos2: {
+                    1000: { titulo: 'Laravel', descricao: 'Domine o framework PHP' },
+                    1001: { titulo: 'Banco de Dados', descricao: 'Aprenda os principais BDs relacionar' },
+                },
+                publicacoes: [
+                    { id: 1, publicacao: 'Publicacão 001' },
+                    { id: 2, publicacao: 'Publicacão 002' },
+                    { id: 3, publicacao: 'Publicacão 003' },
+                    { id: 4, publicacao: 'Publicacão 004' },
+                ],
+            },
+            methods: {
+                adicionarElemento(){
+                    //this.comentarios[4] = {id: 5, comentario: 'Novo Comentário'};
+                    //console.log(this.comentarios);
+                    this.comentarios.push({id: 5, comentario: 'Novo Comentário'});
+                },
+
+                adicionarNumero(){
+                    this.numero++;
+                },
+
+                removerElemento(){
+                    this.comentarios.pop();
+                },
+
+                modificarElemento(){
+                    //this.comentarios[1] = {id: 2, comentario: 'Comentário 2 Atualizado'};
+                    this.$set(this.comentarios, 1, {id: 2, comentario: 'Comentário 2 Atualizado'});
+                },
+            }
+        }); //vm = ViewModel
+
+    </script>
+
+</body>
+
+</html>
