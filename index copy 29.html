@@ -16,11 +16,6 @@
 <body>
     <div id="app">
         <span>Paciente: </span><input type="text" v-model="paciente">
-        <br>
-        <hr>
-        <ul>
-            <li v-for="b in busca">{{ b.nome }}, {{ b.idade }}</li>
-        </ul>
     </div>
 
 
@@ -30,22 +25,13 @@
             el: '#app',
             data: {
                 paciente: '',
-                pacientes: [
-                    {nome: 'Luan Batista', idade: '26'},
-                    {nome: 'Lyandra', idade: '25'},
-                    {nome: 'Maria', idade: '50'},
-                    {nome: 'José M', idade: '35'},
-                    {nome: 'Lucas', idade: '6'},
-                    {nome: 'Luciano', idade: '19'},
-                ],
-                busca: [],
             },
             methods: {
                 
             },
             watch: {
-                paciente(v){
-                    this.busca = this.pacientes.filter(p => p.nome.match(v))
+                paciente(valorNovo, valorAntigo){
+                    console.log(valorNovo, valorAntigo)
                 }
             }
         }); //vm = ViewModel
